@@ -138,7 +138,7 @@ Transform:
   - {fileID: 8534942593061200520}
   - {fileID: 5252807842292736736}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5723795419184743691
 PrefabInstance:
@@ -207,6 +207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoadWorksBarrierHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 017d8149d794b7b448d67f4151e4b3b2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

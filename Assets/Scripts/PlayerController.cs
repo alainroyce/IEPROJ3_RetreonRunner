@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             //direction.y = 0;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (SwipeManager.swipeUp)
             {
                 Jump();
             }
@@ -40,16 +40,29 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) 
+        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
+
+        if (desiredLane == 0)
         {
+            targetPosition += Vector3.left * laneDistance;
+        }
+        else if (desiredLane == 2)
+        {
+            targetPosition += Vector3.right * laneDistance;
+        }
+
+        if (SwipeManager.swipeRight) 
+        {
+            //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
             desiredLane++;
             if(desiredLane == 3) 
             {
                 desiredLane = 2;
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (SwipeManager.swipeLeft)
         {
+            //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
             desiredLane--;
             if (desiredLane == -1)
             {
@@ -57,19 +70,26 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-        
-        if(desiredLane== 0) 
+        //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
+        //transform.position= targetPosition;
+       // controller.center = controller.center;
+
+        if(transform.position == targetPosition)
         {
-            targetPosition += Vector3.left * laneDistance;
+            return;
         }
-        else if( desiredLane== 2) 
+        Vector3 diff = targetPosition - transform.position;
+        Vector3 moveDir = diff.normalized* 25 * Time.deltaTime;
+        if(moveDir.sqrMagnitude > diff.sqrMagnitude) 
         {
-            targetPosition += Vector3.right * laneDistance;
+            controller.Move(moveDir);
+        }
+        else
+        {
+            controller.Move(moveDir);
         }
 
-       // transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
-       transform.position= targetPosition;  
+
     }
 
 
@@ -81,5 +101,12 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         direction.y = jumpForce;
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.transform.tag =="Obstacle")
+        {
+            PlayerManager.gameOver = true;
+        }
     }
 }

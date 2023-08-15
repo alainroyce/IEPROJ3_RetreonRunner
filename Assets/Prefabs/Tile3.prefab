@@ -31,7 +31,7 @@ Transform:
   - {fileID: 8146140213161301003}
   - {fileID: 9010880912632685297}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2558264946066179737
 GameObject:
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 2781603964823623232}
   m_Layer: 0
   m_Name: TrafficCone
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
