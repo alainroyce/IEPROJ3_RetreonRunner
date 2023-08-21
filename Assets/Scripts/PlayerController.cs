@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce;
     public float Gravity = -20;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,15 +25,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       direction.z= forwardSpeed;
+        if(!PlayerManager.isGameStarted)
+            return;
 
+        animator.SetBool("isGameStarted", true);
 
+        direction.z= forwardSpeed;
+
+       // isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
+       // animator.SetBool("isGrounded", isGrounded);
         if (controller.isGrounded)
         {
             //direction.y = 0;
             if (SwipeManager.swipeUp)
             {
                 Jump();
+                animator.SetBool("isGrounded", false);
+            }
+            else
+            {
+                animator.SetBool("isGrounded", true);
             }
         }
         else
@@ -95,6 +108,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!PlayerManager.isGameStarted)
+            return;
         controller.Move(direction*Time.fixedDeltaTime);
 
     }

@@ -3296,7 +3296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234851879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.188797, y: 63.041626, z: 178.34}
+  m_LocalPosition: {x: 19.6, y: 63.041626, z: 178.34}
   m_LocalScale: {x: 1284.8792, y: 312.43524, z: 66.4056}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4585,89 +4585,18 @@ Transform:
   m_Father: {fileID: 797690904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1717137070
+--- !u!1 &1717137070 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5803375677705057226, guid: 9ff18a7b478015c4383a86c433ae11ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 9004608317536307181}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1717137074}
-  - component: {fileID: 1717137073}
-  - component: {fileID: 1717137072}
-  m_Layer: 0
-  m_Name: Retro Sun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &1717137072
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717137070}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 2
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 4294967295
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a47e736ab4075e144a72bc79d5acdfad, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1717137073
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717137070}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1717137074
+--- !u!4 &1717137074 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 9004608317536307181}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717137070}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.158798, y: 49, z: 196.45967}
-  m_LocalScale: {x: 118.51182, y: 118.51192, z: 118.51192}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1170246653}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1751355086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4c08a65a1e181fc45ab09b0e7a699694,
@@ -5355,3 +5284,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a072fbb5a0eb37b459bb1608f4a7a55b, type: 3}
+--- !u!1001 &9004608317536307181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1170246653}
+    m_Modifications:
+    - target: {fileID: 5803375677705057226, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_Name
+      value: Retro Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.158798
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 196.45967
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888561223111267527, guid: 9ff18a7b478015c4383a86c433ae11ad,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ff18a7b478015c4383a86c433ae11ad, type: 3}
