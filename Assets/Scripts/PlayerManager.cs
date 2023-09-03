@@ -15,6 +15,10 @@ public class PlayerManager : MonoBehaviour
 
     public static int numberOfCoins;
     public TextMeshProUGUI coinsText;
+
+
+    public AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +37,10 @@ public class PlayerManager : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
         coinsText.text = "Coins: " + numberOfCoins;
-        if(SwipeManager.tap)
+        if(SwipeManager.tap && !isGameStarted)
         {
             isGameStarted = true;
+            audioManager.PlayMusic();
             Destroy(startingText);
         }
     }

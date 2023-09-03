@@ -6,19 +6,27 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
-    private Vector3 direction;
+    [SerializeField] private Vector3 direction;
     public float forwardSpeed;
     public float maxSpeed;
 
 
     private int desiredLane = 1;
-    public float laneDistance = 4;
+    [SerializeField] private float laneDistance = 1.8f;
 
     public float jumpForce;
     public float Gravity = -20;
 
     public Animator animator;
     private bool isSliding = false;
+
+    //lerp stuff
+    private float elapsedTime = 0;
+    private float laneChangeDuration = 0.03f;
+    private bool isLaneChanging = false;
+    private float startXPos;
+    private float endXPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,107 +39,51 @@ public class PlayerController : MonoBehaviour
         if(!PlayerManager.isGameStarted)
             return;
 
-        //increase speed 
-        if (forwardSpeed < maxSpeed)
+        if (!animator.GetBool("isGameStarted"))
         {
-            forwardSpeed += 0.1f * Time.deltaTime;
+            animator.SetBool("isGameStarted", true);
+        }
+        
+        if (SwipeManager.swipeRight && !isLaneChanging) 
+        {
+            Debug.Log("Swipe Right");
+            startXPos = transform.position.x;
+            endXPos = transform.position.x + laneDistance;
+            isLaneChanging = true;
+            controller.enabled = false;
+        }
+        else if (SwipeManager.swipeLeft && !isLaneChanging)
+        {
+            Debug.Log("Swipe Right");
+            startXPos = transform.position.x;
+            endXPos = transform.position.x - laneDistance;
+            isLaneChanging = true;
+            controller.enabled = false;
         }
 
-        animator.SetBool("isGameStarted", true);
-
-        direction.z= forwardSpeed;
-
-       //isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-       //animator.SetBool("isGrounded", isGrounded);
-        if (controller.isGrounded)
+        if (isLaneChanging && elapsedTime < laneChangeDuration)
         {
-            //direction.y = 0;
-            if (SwipeManager.swipeUp)
+            transform.position = new Vector3(Mathf.Lerp(startXPos, endXPos, elapsedTime / laneChangeDuration), transform.position.y, transform.position.z);
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= laneChangeDuration)
             {
-                Jump();
-                animator.SetBool("isGrounded", false);
-            }
-            else
-            {
-                animator.SetBool("isGrounded", true);
-            }
-        }
-        else
-        {
-            direction.y += Gravity * Time.deltaTime;
-
-
-        }
-
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-
-        if (desiredLane == 0)
-        {
-            targetPosition += Vector3.left * laneDistance;
-        }
-        else if (desiredLane == 2)
-        {
-            targetPosition += Vector3.right * laneDistance;
-        }
-
-        if(SwipeManager.swipeDown && !isSliding)
-        {
-            StartCoroutine(Slide());
-        }
-
-        if (SwipeManager.swipeRight) 
-        {
-            //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
-            desiredLane++;
-            if(desiredLane == 3) 
-            {
-                desiredLane = 2;
-            }
-        }
-        if (SwipeManager.swipeLeft)
-        {
-            //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
-            desiredLane--;
-            if (desiredLane == -1)
-            {
-                desiredLane = 0;
+                transform.position = new Vector3(endXPos, transform.position.y, transform.position.z);
+                isLaneChanging = false;
+                elapsedTime = 0;
+                controller.enabled = true;
             }
         }
 
-        //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
-        //transform.position= targetPosition;
-       // controller.center = controller.center;
-
-        if(transform.position == targetPosition)
-        {
-            return;
-        }
-        Vector3 diff = targetPosition - transform.position;
-        Vector3 moveDir = diff.normalized* 25 * Time.deltaTime;
-        if(moveDir.sqrMagnitude > diff.sqrMagnitude) 
-        {
-            controller.Move(moveDir);
-        }
-        else
-        {
-            controller.Move(moveDir);
-        }
-
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + forwardSpeed * Time.deltaTime);
+        
     }
 
-
-    private void FixedUpdate()
-    {
-        if (!PlayerManager.isGameStarted)
-            return;
-        controller.Move(direction*Time.fixedDeltaTime);
-
-    }
     private void Jump()
     {
         direction.y = jumpForce;
     }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.transform.tag =="Obstacle")
